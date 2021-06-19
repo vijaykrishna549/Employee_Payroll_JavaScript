@@ -32,8 +32,10 @@ class EmployeeParollData
     }
     set name(name)
     {
-        console.log("Setting: " +name);
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$')
+        if(nameRegex.test(name))
         this._name = name;
+        else throw 'Name is Incorrect';
     }
 
     //Method
@@ -41,17 +43,24 @@ class EmployeeParollData
     toString()
     {
        return "id: "+this.id +",name: "+this.name+  " gender: "+this.gender + 
-       " ,salary: "+this.salary+" ,startDate: "+ this.startDate;
+       " ,salary: "+this.salary+" ,startDate: "+ this.startDate; 
 
     }
 
 }
 let employeePayrollData = new EmployeeParollData(1, "Ankit", 50000);
 console.log(employeePayrollData.toString());
- employeePayrollData.name = "Jhon";
+try{
+ employeePayrollData.name = "jhon";
  console.log(employeePayrollData.toString());
+}
+catch(e)
+{
+    console.error(e)
+}
+console.log(employeePayrollData.toString());
 employeePayrollData.id = 2, employeePayrollData._name = "Terrisa", employeePayrollData.salary = 49999,
  employeePayrollData.gender ='F', employeePayrollData.startDate= new Date();
 console.log(employeePayrollData.toString());
-let newEmployeePayrollData = new EmployeeParollData(3, "Terrisa", 30000, "F", new Date());
-console.log(employeePayrollData.toString());
+// let newEmployeePayrollData = new EmployeeParollData(3, "Terrisa", 30000, "F", new Date());
+// console.log(employeePayrollData.toString());
