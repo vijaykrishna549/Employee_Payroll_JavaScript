@@ -32,10 +32,43 @@ class EmployeeParollData
     }
     set name(name)
     {
-        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$')
+        let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
         if(nameRegex.test(name))
         this._name = name;
         else throw 'Name is Incorrect';
+    }
+    get id()
+    {
+        return this._id;
+    }
+    set id(id)
+    { 
+        let idRegex = RegExp('^[1-9]{1}[0-9]{0,}$');
+        if(idRegex.test(id))
+        this._id = id;
+        else throw 'Enter Id as Positive Integer';
+    }
+    get salary()
+    {
+        return this._salary;
+    }
+    set salary(salary)
+    {
+        let salaryRegex = RegExp('^[1-9]{1}[0-9]{0,}$'); 
+        if (salaryRegex.test(salary))
+        this._salary = salary;
+        else throw 'Enter Positive Salary';
+    }
+    get gender()
+    {
+        return this._gender;
+    }
+    set gender(gender)
+    {
+        let genderRegex = RegExp('^[M,F]$'); 
+        if (genderRegex.test(gender))
+        this._gender= gender;
+        else throw 'Enter Gender As Either M or F';
     }
 
     //Method
@@ -51,7 +84,7 @@ class EmployeeParollData
 let employeePayrollData = new EmployeeParollData(1, "Ankit", 50000);
 console.log(employeePayrollData.toString());
 try{
- employeePayrollData.name = "jhon";
+ employeePayrollData.name = "Jhon";
  console.log(employeePayrollData.toString());
 }
 catch(e)
@@ -59,7 +92,7 @@ catch(e)
     console.error(e)
 }
 console.log(employeePayrollData.toString());
-employeePayrollData.id = 2, employeePayrollData._name = "Terrisa", employeePayrollData.salary = 49999,
+employeePayrollData.id = 3, employeePayrollData._name = "Terrisa", employeePayrollData.salary = 49999,
  employeePayrollData.gender ='F', employeePayrollData.startDate= new Date();
 console.log(employeePayrollData.toString());
 // let newEmployeePayrollData = new EmployeeParollData(3, "Terrisa", 30000, "F", new Date());
